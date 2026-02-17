@@ -14,9 +14,9 @@ public class Words {
         for (int i = 0; t == false; i++) {
             if (in.charAt(i+wordBounds[j*2]) == ' ') {
                 t = true;
-                wordBounds[(2*j)+1] = i+wordBounds[j*2] - 1;
-                if (2*j+2 < 8) {
-                    wordBounds[(2*j)+2] = i+wordBounds[j*2] + 1;
+                wordBounds[(2*j)-1] = i+wordBounds[j*2-2] - 1;
+                if (2*j < 8) {
+                    wordBounds[(2*j)+0] = i+wordBounds[j*2-2] + 1;
                 }
             }
         }
