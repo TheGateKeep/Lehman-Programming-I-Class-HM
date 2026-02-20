@@ -8,15 +8,20 @@ public class Words {
     String in = scn.nextLine();
     
     boolean t = true;
-    int[] wordBounds = new int[8];
-    wordBounds[0] = 0;
-    for (int j = 0; j < 4; j++) {
-        for (int i = 0; t == false; i++) {
-            if (in.charAt(i+wordBounds[j*2]) == ' ') {
+    int[] wordBounds = new int[9];  //just ignore the 9th value
+    wordBounds[0] = 0;              //sets first start to 0
+    /*
+        Each index is meant to be the char index of the start or end of a wordBounds
+        this is to then know where to search to / from for
+        8 values, 4 for the starts, 4 for the ends
+    */
+    for (int j = 0; j < 5; j++) {   //j goes from 0 - 4, being each word
+        for (int i = 0; t == false; i++) {  //i goes through each letter in the word to find the end
+            if (in.charAt(i+wordBounds[j*2]) == ' ') { //9th value prevents this from going out of bounds
                 t = true;
                 wordBounds[(2*j)-1] = i+wordBounds[j*2-2] - 1;
                 if (2*j < 8) {
-                    wordBounds[(2*j)+0] = i+wordBounds[j*2-2] + 1;
+                    wordBounds[(2*j)] = i+wordBounds[j*2-2] + 1;
                 }
             }
         }
