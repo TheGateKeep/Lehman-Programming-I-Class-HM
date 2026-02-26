@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Words {
   public static void main(String[] args) {
@@ -27,10 +28,10 @@ public class Words {
         t = false;
     }
     
-    String word1 = in.substring(wordBounds[0],wordBounds[1]);
-    String word2 = in.substring(wordBounds[2],wordBounds[3]);
-    String word3 = in.substring(wordBounds[4],wordBounds[5]);
-    String word4 = in.substring(wordBounds[6],wordBounds[7]);
+    String word1 = in.substring(wordBounds[0],wordBounds[1]+1);
+    String word2 = in.substring(wordBounds[2],wordBounds[3]+1);
+    String word3 = in.substring(wordBounds[4],wordBounds[5]+1);
+    String word4 = in.substring(wordBounds[6],wordBounds[7]+1);
     
     int[][] vowels = {{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
     boolean[] vowelFound = {false,false,false,false,false};
@@ -77,12 +78,20 @@ public class Words {
                     break;
             }
         }
+        Arrays.fill(vowelFound,false);
     }
     
-    System.out.println("Word 1 = "+word1+" Length = "+(word1.length()+1)+" position of vowels: 'a' = "+vowels[0][0]+", 'e' = "+vowels[0][1]+", 'i' = "+vowels[0][2]+", 'o' = "+vowels[0][3]+", 'u' = "+vowels[0][4]);
-    System.out.println("Word 1 = "+word2+" Length = "+(word2.length()+1)+" position of vowels: 'a' = "+vowels[1][0]+", 'e' = "+vowels[1][1]+", 'i' = "+vowels[1][2]+", 'o' = "+vowels[1][3]+", 'u' = "+vowels[1][4]);
-    System.out.println("Word 1 = "+word3+" Length = "+(word3.length()+1)+" position of vowels: 'a' = "+vowels[2][0]+", 'e' = "+vowels[2][1]+", 'i' = "+vowels[2][2]+", 'o' = "+vowels[2][3]+", 'u' = "+vowels[2][4]);
-    System.out.println("Word 1 = "+word4+" Length = "+(word4.length()+1)+" position of vowels: 'a' = "+vowels[3][0]+", 'e' = "+vowels[3][1]+", 'i' = "+vowels[3][2]+", 'o' = "+vowels[3][3]+", 'u' = "+vowels[3][4]);
+    String[] words = {word1,word2,word3,word4};
     
+    for (int p = 0; p < 4; p++) {
+        System.out.println(
+            "Word "+(p+1)+" = "+words[p]+
+            " Length = "+(words[p].length())+
+            " position of vowels: 'a' = "+vowels[p][0]+
+            ", 'e' = "+vowels[p][1]+
+            ", 'i' = "+vowels[p][2]+
+            ", 'o' = "+vowels[p][3]+
+            ", 'u' = "+vowels[p][4]);
+    }
   }
 }
