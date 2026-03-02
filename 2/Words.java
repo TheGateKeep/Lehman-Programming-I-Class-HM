@@ -33,6 +33,8 @@ public class Words {
     String word3 = in.substring(wordBounds[4],wordBounds[5]+1);
     String word4 = in.substring(wordBounds[6],wordBounds[7]+1);
     
+    String[] words = {word1,word2,word3,word4};
+    
     int[][] vowels = {{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
     boolean[] vowelFound = {false,false,false,false,false};
     /*
@@ -42,35 +44,35 @@ public class Words {
     */
     
     for (int k = 0; k < 4; k++) {                                   //k is each word
-        for (int m = wordBounds[k]; m <= wordBounds[k+1]; m++) {    //m indexes through each letter
-            switch (in.charAt(m)) {
+        for (int m = 0; m < words[k].length(); m++) {    //m indexes through each letter
+            switch (words[k].charAt(m)) {
                 case 'a':
                     if (vowelFound[0] == false) {
-                        vowels[k][0] = m - wordBounds[k];
+                        vowels[k][0] = m;
                         vowelFound[0] = true;
                     }
                     break;
                 case 'e':
                     if (vowelFound[1] == false) {
-                        vowels[k][1] = m - wordBounds[k];
+                        vowels[k][1] = m;
                         vowelFound[1] = true;
                     }
                     break;
                 case 'i':
                     if (vowelFound[2] == false) {
-                        vowels[k][2] = m - wordBounds[k];
+                        vowels[k][2] = m;
                         vowelFound[2] = true;
                     }
                     break;
                 case 'o':
                     if (vowelFound[3] == false) {
-                        vowels[k][3] = m - wordBounds[k];
+                        vowels[k][3] = m;
                         vowelFound[3] = true;
                     }
                     break;
                 case 'u':
                     if (vowelFound[4] == false) {
-                        vowels[k][4] = m - wordBounds[k];
+                        vowels[k][4] = m;
                         vowelFound[4] = true;
                     }
                     break;
@@ -80,8 +82,6 @@ public class Words {
         }
         Arrays.fill(vowelFound,false);
     }
-    
-    String[] words = {word1,word2,word3,word4};
     
     for (int p = 0; p < 4; p++) {
         System.out.println(
