@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class CopenhagenTransit {
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in); 
     
