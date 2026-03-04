@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Words {
+public class Main {
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in); 
     
@@ -28,12 +28,10 @@ public class Words {
         t = false;
     }
     
-    String word1 = in.substring(wordBounds[0],wordBounds[1]+1);
-    String word2 = in.substring(wordBounds[2],wordBounds[3]+1);
-    String word3 = in.substring(wordBounds[4],wordBounds[5]+1);
-    String word4 = in.substring(wordBounds[6],wordBounds[7]+1);
-    
-    String[] words = {word1,word2,word3,word4};
+    String[] words = new String[4];
+    for (int s = 0; s < 4; s++) {
+        words[s] = in.substring(wordBounds[s*2],wordBounds[s*2+1]+1);
+    }
     
     int[][] vowels = {{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
     boolean[] vowelFound = {false,false,false,false,false};
@@ -42,43 +40,40 @@ public class Words {
         a is which word is being looked at, 0-3
         b is which vowel, order a e i o u for 0-4
     */
-    
+    int vow = 0;
+    boolean found = false;
     for (int k = 0; k < 4; k++) {                                   //k is each word
         for (int m = 0; m < words[k].length(); m++) {    //m indexes through each letter
             switch (words[k].charAt(m)) {
                 case 'a':
-                    if (vowelFound[0] == false) {
-                        vowels[k][0] = m;
-                        vowelFound[0] = true;
-                    }
+                    vow = 0;
+                    found = true;
                     break;
                 case 'e':
-                    if (vowelFound[1] == false) {
-                        vowels[k][1] = m;
-                        vowelFound[1] = true;
-                    }
+                    vow = 1;
+                    found = true;
                     break;
                 case 'i':
-                    if (vowelFound[2] == false) {
-                        vowels[k][2] = m;
-                        vowelFound[2] = true;
-                    }
+                    vow = 2;
+                    found = true;
                     break;
                 case 'o':
-                    if (vowelFound[3] == false) {
-                        vowels[k][3] = m;
-                        vowelFound[3] = true;
-                    }
+                    vow = 3;
+                    found = true;
                     break;
                 case 'u':
-                    if (vowelFound[4] == false) {
-                        vowels[k][4] = m;
-                        vowelFound[4] = true;
-                    }
+                    vow = 4;
+                    found = true;
                     break;
                 default:
                     break;
             }
+            if (vowelFound[vow] == false && found) {
+                        vowels[k][vow] = m;
+                        vowelFound[vow] = true;
+            }
+            found = false;
+            vow = 0;
         }
         Arrays.fill(vowelFound,false);
     }
