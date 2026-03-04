@@ -13,26 +13,26 @@ public class CopenhagenTransit {
     double fare = 0;
     
     if (zone <= 2) {
-        if (age == "adult") {
+        if (age.equals("adult")) {
             fare = 23;
         }
-        else if (age == "child") {
+        else if (age.equals("child")) {
             fare = 11.5;
         }
     }
     else if (zone == 3) {
-        if (age == "adult") {
+        if (age.equals("adult")) {
             fare = 34.5;
         }
-        else if (age == "child") {
+        else if (age.equals("child")) {
             fare = 23;
         }
     }
     else if (zone == 4) {
-        if (age == "adult") {
+        if (age.equals("adult")) {
             fare = 46;
         }
-        else if (age == "child") {
+        else if (age.equals("child")) {
             fare = 23;
         }
     }
