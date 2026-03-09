@@ -33,9 +33,15 @@ public class DateConverter {
         return;
     }
     
-    if (month == 2 && date == 29) {
-        System.out.print("Invalid date: "+months.values()[month-1]+", does not have "+date+" days, please enter a valid date.");
+    if ((month == 2 && date == 29) && !(
+    (year % 4 == 0 && year % 100 != 0)
+    || (year % 4 == 0 && year % 100 == 0 && year % 400 == 0)
+    )) {
+        System.out.print("Invalid date: "+year+" is not a leap year, February does not have "+date+" days, please enter a valid date.");
         return;
     }
+    
+    System.out.printf("%d %d %d %d is %s %s %d, %d",
+    day, month, date, year, days.values()[month-1],months.values()[month-1],date,year);
   }
 }
