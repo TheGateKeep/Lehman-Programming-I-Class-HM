@@ -10,34 +10,33 @@ public class CopenhagenTransit {
     String age = scn.nextLine();
     age = scn.nextLine();
     
-    double fare = 0;
+    double fare = -1;
     
-    if (zone <= 2) {
-        if (age.equals("adult")) {
+    if (age.equals("adult")) {
+        switch (zone) {
+            case 3:
+                fare = 34.5;
+                break;
+            case 4:
+                fare = 46;
+                break;
+        }
+        if (zone <= 2) {
             fare = 23;
         }
-        else if (age.equals("child")) {
+    }
+    else if (age.equals("child")) {
+        switch (zone) {
+            case 3:
+                fare = 23;
+                break;
+            case 4:
+                fare = 23;
+                break;
+        }
+        if (zone <= 2) {
             fare = 11.5;
         }
-    }
-    else if (zone == 3) {
-        if (age.equals("adult")) {
-            fare = 34.5;
-        }
-        else if (age.equals("child")) {
-            fare = 23;
-        }
-    }
-    else if (zone == 4) {
-        if (age.equals("adult")) {
-            fare = 46;
-        }
-        else if (age.equals("child")) {
-            fare = 23;
-        }
-    }
-    else {
-        fare = -1;
     }
     
     System.out.println("The fare for "+age+" to zone number "+zone+" is $"+fare+".");
