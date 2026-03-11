@@ -10,9 +10,12 @@ public class CopenhagenTransit {
     String age = scn.nextLine();
     age = scn.nextLine();
     
-    double fare = -1;
+    double fare = -1;     //defaults to -1
     
     if (age.equals("adult")) {
+        if (zone <= 2) {  //if statement for all below 3, so can't be used in switch
+            fare = 23;
+        }
         switch (zone) {
             case 3:
                 fare = 34.5;
@@ -21,11 +24,11 @@ public class CopenhagenTransit {
                 fare = 46;
                 break;
         }
-        if (zone <= 2) {
-            fare = 23;
-        }
     }
     else if (age.equals("child")) {
+        if (zone <= 2) {  //ditto of line 16
+            fare = 11.5;
+        }
         switch (zone) {
             case 3:
                 fare = 23;
@@ -33,9 +36,6 @@ public class CopenhagenTransit {
             case 4:
                 fare = 23;
                 break;
-        }
-        if (zone <= 2) {
-            fare = 11.5;
         }
     }
     
