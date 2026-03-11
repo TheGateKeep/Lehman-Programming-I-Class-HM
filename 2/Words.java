@@ -1,31 +1,27 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Main {
+public class Words {
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in); 
     
     System.out.println("Enter 4 words:");
     String in = scn.nextLine();
     
-    boolean t = true;
     int[] wordBounds = new int[8]; 
     wordBounds[0] = 0;              //sets first start to 0
     wordBounds[7] = in.length()-1;  //sets last to end of string
-    /*
-        Each index is meant to be the char index of the start or end of a wordBounds
-        this is to then know where to search to / from for
-        8 values, 4 for the starts, 4 for the ends
-    */
-    for (int j = -1; j < 3; j++) {   //j goes from 0 - 4, being each word
-        for (int i = 0; t == false; i++) {  //i goes through each letter in the word to find the end
-            if (in.charAt(i+wordBounds[j*2]) == ' ') {
-                t = true;
-                wordBounds[(2*j)+1] = i+wordBounds[j*2] - 1;
-                wordBounds[(2*j)+2] = i+wordBounds[j*2] + 1;
-            }
+    
+    int space = 0;                  //tracks which space it's found
+    for (int j = 0; j < in.length(); j++) {
+        if (in.charAt(j) == ' ') {
+            
+            //sets var for start and ends of words based on spaces found
+            
+            wordBounds[(2*space)+1] = j - 1;
+            wordBounds[(2*space)+2] = j + 1;
+            space++;
         }
-        t = false;
     }
     
     String[] words = new String[4];
