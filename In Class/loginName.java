@@ -1,3 +1,5 @@
+// change digit grabber to use mod 10 to grab last digit, since mod 10 gives last digit of a num
+
 import java.util.Scanner;
 
 public class loginName {
