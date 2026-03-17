@@ -1,24 +1,23 @@
-// change digit grabber to use mod 10 to grab last digit, since mod 10 gives last digit of a num
-
 import java.util.Scanner;
 
 public class loginName {
   public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in); 
-    
-    System.out.println("Enter your first and last name, and a number:");
+    Scanner scn = new Scanner(System.in);
+   
+    //System.out.println("Enter your first and last name, and a number:");
     String in = scn.nextLine();
-    
+   
     String firstname = in.substring(0,in.indexOf(' '));
     char initial = in.charAt(in.indexOf(' ')+1);
-    char firstnum = in.charAt(in.length()-1);   //no idea what it meant by use the % operator
-    
-    if (firstname.length() > 6) { 
+    int number = Integer.parseInt(in.substring(in.length()-4,in.length()));
+    number %= 10;
+   
+    if (firstname.length() > 6) {
         firstname = firstname.substring(0,6);   //truncating the name
     }
-    
-    String loginname = firstname + initial + '_' + firstnum;
-    
+   
+    String loginname = firstname + initial + '_' + number;
+   
     System.out.println("Your login name: " + loginname);
   }
 }
