@@ -6,7 +6,8 @@ public class Homework6Methods {
   
   public static void main(String[] args) {
     //input system used for testing
-    System.out.print("Select Method: ");
+    
+    System.out.print("Select Method 0-11: ");
     int p = scn.nextInt();
     System.out.println("Grant Input: ");
     
