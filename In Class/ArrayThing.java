@@ -1,7 +1,9 @@
+import java.util.Scanner;
+
 public class ArrayThing {
   public static void main(String[] args) {
-    int[] a = {1,6,17,2,26,62,3,432,14,36};
-    System.out.println(  highestVal(a)  );
+    int[] a = arrayInput();
+    //System.out.println(  highestVal(a)  );
     a = sort(a);
     
     for(int i = 0; i < a.length; i++) {
@@ -44,5 +46,18 @@ public class ArrayThing {
         }
     }
     return true;
+  }
+  
+  static Scanner scn = new Scanner(System.in);
+  public static int[] arrayInput() {
+    System.out.print("Array length: ");
+    int l = scn.nextInt();
+    int[] out = new int[l];
+    
+    System.out.println("Array values: ");
+    for(int i = 0; i < l; i++) {
+        out[i] = scn.nextInt();
+    }
+    return out;
   }
 }
