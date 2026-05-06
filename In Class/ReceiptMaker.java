@@ -73,7 +73,7 @@ public class ReceiptMaker {
 		double maxPrice = Integer.MIN_VALUE;
 		for(int i=1; i<numItemsPurchased; i++){
 			if(itemPrices[i] > maxPrice){
-				maxPrice = itemPrices[i-1];
+				maxPrice = itemPrices[i];
 			}
 		}
 		return maxPrice;
