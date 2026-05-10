@@ -28,26 +28,26 @@ public class Movie {
   
   public boolean replaceCastMember(int index, String castMemberName) {
     if(index < this.castMembers.length) {
-        this.castMembers = castMemberName;
+        this.castMembers[index] = castMemberName;
         return true;
     }
     return false;
   }
   
   //getters
-  public String getMovieName() {String S = this.MovieName; return S;}
-  public int getNumMinutes() {return this.NumMinutes;}
-  public boolean getMovieName() {return this.MovieName;}
-  public int getNumCastMembers() {return this.NumCastMembers;}
-  public String[] getCastMembers() {String[] S = this.CastMembers; return SS;}
+  public String getMovieName() {String S = this.movieName; return S;}
+  public int getNumMinutes() {return this.numMinutes;}
+  public boolean getIsKidFriendly() {return this.isKidFriendly;}
+  public int getNumCastMembers() {return this.numCastMembers;}
+  public String[] getCastMembers() {String[] SS = this.castMembers; return SS;}
   
   
   public boolean doArraysMatch(String[] arr1, String[] arr2) {
     if(arr1 == null && arr2 == null) {
-        returns true;
+        return true;
     }
     else if(arr1 == null || arr2 == null) {
-        returns false;
+        return false;
     }
     if(arr1.length != arr2.length) {
         return false;
@@ -78,8 +78,8 @@ public class Movie {
   
   public String toString() {
     String name = String.format(movieName+"%20");
-    String min = (String) this.NumMinutes;
-    if (this.NumMinutes < 100) { min = "0"+min; }
+    String min = "" + this.numMinutes;
+    if (this.numMinutes < 100) { min = "0"+min; }
     
     String out = "Movie: [ Minutes "+min+" | Movie Name:"+name+"| ";
     if (this.isKidFriendly) { out += "is kid friendly"; }
@@ -87,12 +87,12 @@ public class Movie {
     out += " | Number of Cast Members: "+numCastMembers+" | Cast Members: "+getCastMemberNamesAsString()+" ]";
   }
   
-  public boolean equals(Object obj) {
-    if ((this.movieName != obj.movieName)
-    || (this.numMinutes != obj.numMinutes)
-    || (this.isKidFriendly != obj.isKidFriendly)
-    || (this.numCastMembers != obj.numCastMembers)
-    || (!(doArraysMatch(this.castMembers,obj.castMembers)))
+  public boolean equals(Object o) {
+    if ((this.movieName != obj.getMovieName())
+    || (this.numMinutes != obj.getNumMinutes())
+    || (this.isKidFriendly != obj.getIsKidFriendly())
+    || (this.numCastMembers != obj.getNumCastMembers())
+    || (!(doArraysMatch(this.castMembers,obj.getCastMembers())))
     ) { return false; }
     
     return true; 
