@@ -2,7 +2,7 @@ public class Movie {
   private String movieName;
   private int numMinutes;
   private boolean isKidFriendly;
-  private int numCastMembers
+  private int numCastMembers;
   private String[] castMembers;
   
   public Movie(String movieName, int numMinutes, boolean isKidFriendly, String[] castMembers) {
@@ -78,7 +78,24 @@ public class Movie {
   
   public String toString() {
     String name = String.format(movieName+"%20");
-    //do thing here to pad a 0 to minutes if not 3 digits
+    String min = (String) this.NumMinutes;
+    if (this.NumMinutes < 100) { min = "0"+min; }
+    
+    String out = "Movie: [ Minutes "+min+" | Movie Name:"+name+"| ";
+    if (this.isKidFriendly) { out += "is kid friendly"; }
+    else { out += "not kid friendly"; }
+    out += " | Number of Cast Members: "+numCastMembers+" | Cast Members: "+getCastMemberNamesAsString()+" ]";
+  }
+  
+  public boolean equals(Object obj) {
+    if ((this.movieName != obj.movieName)
+    || (this.numMinutes != obj.numMinutes)
+    || (this.isKidFriendly != obj.isKidFriendly)
+    || (this.numCastMembers != obj.numCastMembers)
+    || (!(doArraysMatch(this.castMembers,obj.castMembers)))
+    ) { return false; }
+    
+    return true; 
   }
   
   public static void main(String[] args) {
