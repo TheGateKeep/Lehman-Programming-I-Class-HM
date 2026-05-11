@@ -85,16 +85,21 @@ public class Movie {
     if (this.isKidFriendly) { out += "is kid friendly"; }
     else { out += "not kid friendly"; }
     out += " | Number of Cast Members: "+numCastMembers+" | Cast Members: "+getCastMemberNamesAsString()+" ]";
+    
+    return out;
   }
   
   public boolean equals(Object o) {
-    if ((this.movieName != obj.getMovieName())
-    || (this.numMinutes != obj.getNumMinutes())
-    || (this.isKidFriendly != obj.getIsKidFriendly())
-    || (this.numCastMembers != obj.getNumCastMembers())
-    || (!(doArraysMatch(this.castMembers,obj.getCastMembers())))
-    ) { return false; }
-    
+    if (o instanceof Movie && o != null) {
+        Movie obj = (Movie) o;
+        if ((this.movieName != obj.getMovieName())
+        || (this.numMinutes != obj.getNumMinutes())
+        || (this.isKidFriendly != obj.getIsKidFriendly())
+        || (this.numCastMembers != obj.getNumCastMembers())
+        || (!(doArraysMatch(this.castMembers,obj.getCastMembers())))
+        ) { return false; }
+    }
+    else { return false; }
     return true; 
   }
   
